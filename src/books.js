@@ -152,7 +152,7 @@ function booksByAuthor(object) {
     const books = object[author];
 
     books.forEach(function(book){
-      newArr.push({title: book[0], author: author, pages: book[1]})
+      newArr.push({title: book[0], pages: book[1], author: author})
     })
 
   }
@@ -161,8 +161,21 @@ function booksByAuthor(object) {
 
 console.log(booksByAuthor(dictionary));
 
+const arrayOfBooks = booksByAuthor(dictionary);
+
 // Bonus: Iteration 6 | Average Page Count
-function averagePageCount() {
+function averagePageCount(array) {
   // Your code here:
-  
+  let pageCount = 0;
+  let sumPages = 0;
+
+
+  array.forEach(function(book){
+    sumPages += book.pages;
+    pageCount = Math.ceil(sumPages / array.length);
+  })
+
+  return pageCount
 }
+
+console.log(averagePageCount(arrayOfBooks))
